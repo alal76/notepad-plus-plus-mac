@@ -27,7 +27,7 @@ static NSString * const kAutoSaveKey = @"AutoSave";
 static NSString * const kBackupKey = @"Backup";
 static NSString * const kSessionRestoreKey = @"SessionRestore";
 
-@interface PreferencesWindowController ()
+@interface PreferencesWindowController () <NSTextFieldDelegate>
 
 @property (strong, nonatomic) ConfigManager *configManager;
 
@@ -130,6 +130,7 @@ static NSString * const kSessionRestoreKey = @"SessionRestore";
     [self addLabel:@"Tab size:" atY:yPos toView:_editorPanel];
     NSTextField *tabSizeField = [[NSTextField alloc] initWithFrame:NSMakeRect(kLabelWidth + kPanelPadding, yPos, 60, kControlHeight)];
     tabSizeField.formatter = [[NSNumberFormatter alloc] init];
+    tabSizeField.delegate = self;
     [_editorPanel addSubview:tabSizeField];
     _tabSizeField = tabSizeField;
     
@@ -213,6 +214,7 @@ static NSString * const kSessionRestoreKey = @"SessionRestore";
     [self addLabel:@"Recent files limit:" atY:yPos toView:_filesPanel];
     NSTextField *recentFilesLimitField = [[NSTextField alloc] initWithFrame:NSMakeRect(kLabelWidth + kPanelPadding, yPos, 60, kControlHeight)];
     recentFilesLimitField.formatter = [[NSNumberFormatter alloc] init];
+    recentFilesLimitField.delegate = self;
     [_filesPanel addSubview:recentFilesLimitField];
     _recentFilesLimitField = recentFilesLimitField;
     
@@ -493,6 +495,24 @@ static NSString * const kSessionRestoreKey = @"SessionRestore";
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
     // Save preferences when switching tabs
     [self savePreferences];
+}
+
+#pragma mark - Text Field Delegate
+
+- (void)controlTextDidChange:(NSNotification *)notification {
+    NSTextField *textField = notification.object;
+    
+    if (textField == _tabSizeField) {
+        NSInteger value = textField.integerValue;
+        if (value >= _tabSizeStepper.minValue && value <= _tabSizeStepper.maxValue) {
+            _tabSizeStepper.integerValue = value;
+        }
+    } else if (textField == _recentFilesLimitField) {
+        NSInteger value = textField.integerValue;
+        if (value >= _recentFilesLimitStepper.minValue && value <= _recentFilesLimitStepper.maxValue) {
+            _recentFilesLimitStepper.integerValue = value;
+        }
+    }
 }
 
 @end

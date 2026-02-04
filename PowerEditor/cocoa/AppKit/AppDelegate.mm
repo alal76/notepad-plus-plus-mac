@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "MainWindowController.h"
+#import "PreferencesWindowController.h"
 
 static NSString * const kRecentFilesKey = @"RecentFiles";
 static const NSUInteger kMaxRecentFiles = 10;
@@ -157,13 +158,7 @@ static const NSUInteger kMaxRecentFiles = 10;
 }
 
 - (IBAction)showPreferences:(id)sender {
-    // TODO: Implement preferences window
-    NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Preferences";
-    alert.informativeText = @"Preferences window is not yet implemented.";
-    alert.alertStyle = NSAlertStyleInformational;
-    [alert addButtonWithTitle:@"OK"];
-    [alert runModal];
+    [[PreferencesWindowController sharedController] showWindow:sender];
 }
 
 - (IBAction)showAbout:(id)sender {
