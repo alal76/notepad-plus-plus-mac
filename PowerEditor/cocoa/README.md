@@ -56,7 +56,7 @@ PowerEditor/cocoa/
 ### 📋 Phase 3 Planned (Advanced Features)
 - [ ] Find/Replace dialog
 - [ ] Syntax highlighting integration
-- [ ] Preferences window
+- [x] Preferences window
 - [ ] Split view functionality
 - [ ] Session management
 - [ ] Advanced panels (function list, file browser)
