@@ -160,9 +160,18 @@ static const CGFloat kCheckboxHeight = 20.0;
 }
 
 - (void)setupKeyboardShortcuts {
-    // Cmd+G - Find Next
-    [self.window addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown handler:^NSEvent * _Nullable(NSEvent *event) {
-        if (event.modifierFlags & NSEventModifierFlagCommand) {
+    // Cmd+G - Find Next, Cmd+Shift+G - Find Previous
+    // Monitor is added when window becomes key
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowDidBecomeKey:)
+                                                 name:NSWindowDidBecomeKeyNotification
+                                               object:self.window];
+}
+
+- (void)windowDidBecomeKey:(NSNotification *)notification {
+    // Add local event monitor for Cmd+G keyboard shortcut
+    [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown handler:^NSEvent * _Nullable(NSEvent *event) {
+        if (event.window == self.window && (event.modifierFlags & NSEventModifierFlagCommand)) {
             if ([event.charactersIgnoringModifiers isEqualToString:@"g"]) {
                 if (event.modifierFlags & NSEventModifierFlagShift) {
                     [self findPrevious:nil];
