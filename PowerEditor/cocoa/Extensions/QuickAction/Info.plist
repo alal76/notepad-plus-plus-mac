@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Open in Notepad++</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.notepad-plus-plus.QuickAction</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>XPC!</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.15</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2024 Notepad++. All rights reserved.</string>
+	
+	<!-- Extension Configuration -->
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<!-- Activation Rules -->
+			<key>NSExtensionActivationRule</key>
+			<dict>
+				<!-- Accept files and folders -->
+				<key>NSExtensionActivationSupportsFileWithMaxCount</key>
+				<integer>100</integer>
+				
+				<!-- Support all text-based file types -->
+				<key>NSExtensionActivationSupportsText</key>
+				<true/>
+				
+				<!-- Support web URLs -->
+				<key>NSExtensionActivationSupportsWebURLWithMaxCount</key>
+				<integer>1</integer>
+			</dict>
+			
+			<!-- Service Menu Configuration -->
+			<key>NSExtensionServiceAllowsFinderPreviewItem</key>
+			<true/>
+			<key>NSExtensionServiceAllowsTouchBarItem</key>
+			<true/>
+			<key>NSExtensionServiceFinderPreviewIconName</key>
+			<string>NSActionTemplate</string>
+			<key>NSExtensionServiceTouchBarBezelColorName</key>
+			<string>TouchBarBezel</string>
+			<key>NSExtensionServiceTouchBarIconName</key>
+			<string>NSActionTemplate</string>
+			<key>NSExtensionServiceTouchBarLabel</key>
+			<string>Open in Notepad++</string>
+		</dict>
+		
+		<!-- Extension Principal Class -->
+		<key>NSExtensionPrincipalClass</key>
+		<string>ActionViewController</string>
+		
+		<!-- Extension Point Identifier -->
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.ui-services</string>
+	</dict>
+</dict>
+</plist>

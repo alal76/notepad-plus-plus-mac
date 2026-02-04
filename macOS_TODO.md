@@ -393,12 +393,14 @@ This document provides an actionable checklist for porting Notepad++ to macOS. I
   - [ ] Check if Notepad++ is default for each type
   - [ ] Button to open System Preferences with instructions
   - [ ] Visual indicators (✓ for registered, ✗ for not)
-- [ ] 🟢 **Quick Action Extension (macOS 10.14+)**
-  - [ ] Create Finder Extension target in Xcode
-  - [ ] Implement QuickActionHandler
-  - [ ] Handle single and multiple file selection
-  - [ ] Launch main app with files
-  - [ ] Test in Finder toolbar and context menu
+- [x] 🟢 **Quick Action Extension (macOS 10.14+)** ✅ IMPLEMENTED
+  - [x] Create Finder Extension target structure in `PowerEditor/cocoa/Extensions/QuickAction/`
+  - [x] Implement ActionViewController with file handling
+  - [x] Handle single and multiple file selection (up to 100 files)
+  - [x] Launch main app with files via NSWorkspace
+  - [x] Support for text, URLs, and web content
+  - [x] Complete documentation (README, BUILD_CONFIGURATION, INTEGRATION_GUIDE)
+  - [ ] Test in Finder toolbar and context menu (requires Xcode integration)
 - [ ] 🟢 **Finder Sync Extension (Advanced)**
   - [ ] Create Finder Sync Extension target
   - [ ] Implement FinderSync class
