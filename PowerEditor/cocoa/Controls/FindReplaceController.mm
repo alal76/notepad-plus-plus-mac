@@ -39,6 +39,9 @@ static const CGFloat kCheckboxHeight = 20.0;
 @property (assign, nonatomic) NSInteger lastSearchPosition;
 @property (assign, nonatomic) BOOL searchFromBeginning;
 
+// Event monitoring
+@property (strong, nonatomic) id eventMonitor;
+
 @end
 
 #pragma mark - Implementation
@@ -74,6 +77,10 @@ static const CGFloat kCheckboxHeight = 20.0;
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if (_eventMonitor) {
+        [NSEvent removeMonitor:_eventMonitor];
+        _eventMonitor = nil;
+    }
 }
 
 #pragma mark - UI Setup
@@ -161,28 +168,48 @@ static const CGFloat kCheckboxHeight = 20.0;
 
 - (void)setupKeyboardShortcuts {
     // Cmd+G - Find Next, Cmd+Shift+G - Find Previous
-    // Monitor is added when window becomes key
+    // Monitor is added when window becomes key and removed when it resigns
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(windowDidBecomeKey:)
                                                  name:NSWindowDidBecomeKeyNotification
                                                object:self.window];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowDidResignKey:)
+                                                 name:NSWindowDidResignKeyNotification
+                                               object:self.window];
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)notification {
+    // Only add monitor if not already present
+    if (self.eventMonitor) {
+        return;
+    }
+    
     // Add local event monitor for Cmd+G keyboard shortcut
-    [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown handler:^NSEvent * _Nullable(NSEvent *event) {
-        if (event.window == self.window && (event.modifierFlags & NSEventModifierFlagCommand)) {
+    __weak typeof(self) weakSelf = self;
+    self.eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown handler:^NSEvent * _Nullable(NSEvent *event) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (strongSelf && event.window == strongSelf.window && (event.modifierFlags & NSEventModifierFlagCommand)) {
             if ([event.charactersIgnoringModifiers isEqualToString:@"g"]) {
                 if (event.modifierFlags & NSEventModifierFlagShift) {
-                    [self findPrevious:nil];
+                    [strongSelf findPrevious:nil];
                 } else {
-                    [self findNext:nil];
+                    [strongSelf findNext:nil];
                 }
                 return nil;
             }
         }
         return event;
     }];
+}
+
+- (void)windowDidResignKey:(NSNotification *)notification {
+    // Remove event monitor when window is no longer key
+    if (self.eventMonitor) {
+        [NSEvent removeMonitor:self.eventMonitor];
+        self.eventMonitor = nil;
+    }
 }
 
 #pragma mark - UI Factory Methods
