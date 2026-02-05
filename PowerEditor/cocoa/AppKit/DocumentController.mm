@@ -7,6 +7,7 @@
 
 #import "DocumentController.h"
 #import "Document.h"
+#import "ScintillaWrapper.h"
 
 @implementation DocumentController
 
@@ -14,6 +15,7 @@
     self = [super init];
     if (self) {
         _documents = [[NSMutableArray alloc] init];
+        _wrappers = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -23,6 +25,11 @@
 - (Document *)createNewDocument {
     Document *document = [[Document alloc] init];
     [self.documents addObject:document];
+    
+    // Create ScintillaWrapper for the document
+    ScintillaWrapper *wrapper = [[ScintillaWrapper alloc] initWithDocument:document];
+    self.wrappers[document] = wrapper;
+    
     self.currentDocument = document;
     
     NSLog(@"Created new document: %@", document.displayName);
@@ -53,6 +60,11 @@
     
     if (success) {
         [self.documents addObject:document];
+        
+        // Create ScintillaWrapper for the document
+        ScintillaWrapper *wrapper = [[ScintillaWrapper alloc] initWithDocument:document];
+        self.wrappers[document] = wrapper;
+        
         self.currentDocument = document;
         NSLog(@"Opened document: %@", url.lastPathComponent);
         return document;
@@ -101,6 +113,9 @@
     
     // Remove from documents array
     [self.documents removeObject:document];
+    
+    // Remove wrapper
+    [self.wrappers removeObjectForKey:document];
     
     // Update current document
     if (self.currentDocument == document) {
@@ -260,6 +275,19 @@
         }
     }
     return NO;
+}
+
+#pragma mark - ScintillaWrapper Management
+
+- (ScintillaWrapper *)wrapperForDocument:(Document *)document {
+    if (!document) {
+        return nil;
+    }
+    return self.wrappers[document];
+}
+
+- (ScintillaWrapper *)currentWrapper {
+    return [self wrapperForDocument:self.currentDocument];
 }
 
 @end

@@ -8,10 +8,12 @@
 #import <Foundation/Foundation.h>
 
 @class Document;
+@class ScintillaWrapper;
 
 @interface DocumentController : NSObject
 
 @property (strong, nonatomic) NSMutableArray<Document *> *documents;
+@property (strong, nonatomic) NSMutableDictionary<Document *, ScintillaWrapper *> *wrappers;
 @property (strong, nonatomic) Document *currentDocument;
 
 // Document management
@@ -37,5 +39,9 @@
 - (NSString *)currentDocumentName;
 - (NSInteger)documentCount;
 - (BOOL)hasUnsavedChanges;
+
+// ScintillaWrapper management
+- (ScintillaWrapper *)wrapperForDocument:(Document *)document;
+- (ScintillaWrapper *)currentWrapper;
 
 @end

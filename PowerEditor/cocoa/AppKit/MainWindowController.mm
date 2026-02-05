@@ -7,7 +7,8 @@
 
 #import "MainWindowController.h"
 #import "DocumentController.h"
-// TODO: Import ScintillaView when available
+#import "ScintillaWrapper.h"
+#import "Document.h"
 
 static const CGFloat kWindowMinWidth = 800.0;
 static const CGFloat kWindowMinHeight = 600.0;
@@ -242,16 +243,19 @@ static const CGFloat kStatusBarHeight = 22.0;
 - (void)newDocument:(id)sender {
     [self.documentController createNewDocument];
     [self updateUIForCurrentDocument];
+    [self updateEditorView];
 }
 
 - (void)newDocumentWithText:(NSString *)text {
     [self.documentController createNewDocumentWithText:text];
     [self updateUIForCurrentDocument];
+    [self updateEditorView];
 }
 
 - (void)openFile:(NSURL *)url {
     [self.documentController openDocument:url];
     [self updateUIForCurrentDocument];
+    [self updateEditorView];
 }
 
 - (void)openDocument:(id)sender {
@@ -275,33 +279,45 @@ static const CGFloat kStatusBarHeight = 22.0;
 #pragma mark - Edit Operations
 
 - (void)undo:(id)sender {
-    // TODO: Implement undo
-    NSLog(@"Undo");
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        [wrapper undo];
+    }
 }
 
 - (void)redo:(id)sender {
-    // TODO: Implement redo
-    NSLog(@"Redo");
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        [wrapper redo];
+    }
 }
 
 - (void)cut:(id)sender {
-    // TODO: Implement cut
-    NSLog(@"Cut");
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        [wrapper cut];
+    }
 }
 
 - (void)copy:(id)sender {
-    // TODO: Implement copy
-    NSLog(@"Copy");
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        [wrapper copy];
+    }
 }
 
 - (void)paste:(id)sender {
-    // TODO: Implement paste
-    NSLog(@"Paste");
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        [wrapper paste];
+    }
 }
 
 - (void)selectAll:(id)sender {
-    // TODO: Implement select all
-    NSLog(@"Select All");
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        [wrapper selectAll];
+    }
 }
 
 #pragma mark - Search Operations
@@ -339,18 +355,24 @@ static const CGFloat kStatusBarHeight = 22.0;
 }
 
 - (void)zoomIn:(id)sender {
-    // TODO: Implement zoom in
-    NSLog(@"Zoom In");
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        [wrapper zoomIn];
+    }
 }
 
 - (void)zoomOut:(id)sender {
-    // TODO: Implement zoom out
-    NSLog(@"Zoom Out");
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        [wrapper zoomOut];
+    }
 }
 
 - (void)resetZoom:(id)sender {
-    // TODO: Implement reset zoom
-    NSLog(@"Reset Zoom");
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        [wrapper resetZoom];
+    }
 }
 
 #pragma mark - UI Updates
@@ -369,8 +391,49 @@ static const CGFloat kStatusBarHeight = 22.0;
 }
 
 - (void)updateStatusBar {
-    // TODO: Get actual values from current document
-    self.statusBarLabel.stringValue = @"Line: 1 | Col: 1 | UTF-8 | LF";
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (wrapper) {
+        NSInteger line, column;
+        [wrapper getCursorPosition:&line column:&column];
+        
+        Document *doc = self.documentController.currentDocument;
+        NSString *statusText = [NSString stringWithFormat:@"Line: %ld | Col: %ld | %@ | %@",
+                               (long)line, (long)column,
+                               doc.encodingName, doc.lineEndingName];
+        self.statusBarLabel.stringValue = statusText;
+    } else {
+        self.statusBarLabel.stringValue = @"Line: 1 | Col: 1 | UTF-8 | LF";
+    }
+}
+
+- (void)updateEditorView {
+    // Get current wrapper
+    ScintillaWrapper *wrapper = [self.documentController currentWrapper];
+    if (!wrapper) {
+        return;
+    }
+    
+    // Create ScintillaView if needed
+    if (!wrapper.scintillaView) {
+        NSRect editorFrame = self.tabView.selectedTabViewItem.view.bounds;
+        [wrapper createScintillaViewWithFrame:editorFrame];
+        [wrapper loadDocumentContent];
+    }
+    
+    // Add to current tab
+    NSTabViewItem *currentTab = self.tabView.selectedTabViewItem;
+    if (currentTab && wrapper.scintillaView) {
+        // Remove existing subviews
+        for (NSView *subview in currentTab.view.subviews) {
+            [subview removeFromSuperview];
+        }
+        
+        // Add ScintillaView
+        NSView *scintillaView = (NSView *)wrapper.scintillaView;
+        scintillaView.frame = currentTab.view.bounds;
+        scintillaView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+        [currentTab.view addSubview:scintillaView];
+    }
 }
 
 @end
