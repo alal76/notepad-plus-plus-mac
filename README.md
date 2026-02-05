@@ -33,7 +33,27 @@ This macOS port provides:
 
 ## Quick Start
 
-### Installation
+### One-Command Installation ⚡
+
+Install Notepad++ with a single command (recommended):
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/alal76/notepad-plus-plus-mac/main/quick-install.sh)
+```
+
+This command will automatically:
+- ✅ Check system requirements
+- ✅ Clone the repository
+- ✅ Build all components (Scintilla, Lexilla, Notepad++)
+- ✅ Create a DMG package
+- ✅ Install to /Applications
+- ✅ Set up file associations
+
+**No manual steps required!** Just run the command and follow the prompts.
+
+### Alternative: Manual Installation
+
+If you prefer to clone first and then install:
 
 ```bash
 # Clone the repository

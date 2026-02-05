@@ -2,9 +2,43 @@
 
 This guide will help you install Notepad++ on your macOS system.
 
-## Quick Install (Recommended)
+## One-Command Quick Install ⚡ (Recommended)
 
-The easiest way to install Notepad++ on macOS is to use the provided installation script:
+The fastest way to install Notepad++ is with a single command:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/alal76/notepad-plus-plus-mac/main/quick-install.sh)
+```
+
+This command will automatically:
+1. ✅ Check your system requirements (macOS 11.0+)
+2. ✅ Install Xcode Command Line Tools (if needed)
+3. ✅ Clone the repository to a temporary directory
+4. ✅ Build Scintilla and Lexilla frameworks
+5. ✅ Build the Notepad++ application
+6. ✅ Create a DMG package (for backup/distribution)
+7. ✅ Install to your Applications folder
+8. ✅ Set up file associations
+9. ✅ Clean up temporary files
+
+**Total time:** 5-10 minutes depending on your Mac's speed.
+
+**What you need:**
+- macOS 11.0 (Big Sur) or later
+- Internet connection
+- ~5 GB of free disk space (temporary, only ~50 MB after cleanup)
+
+Just run the command, follow the prompts, and you're done! 🎉
+
+---
+
+## Alternative Installation Methods
+
+If you prefer more control over the installation process, you can use one of these methods:
+
+## Quick Install (Using the Install Script)
+
+The easiest way to install Notepad++ on macOS (after the one-command method above) is to use the provided installation script:
 
 ```bash
 # Clone the repository
@@ -43,7 +77,30 @@ The script will:
 
 ## Installation Methods
 
-### Method 1: Using the Install Script (Easiest)
+### Method 0: One-Command Quick Install (Fastest) ⚡
+
+Already covered at the top of this document! Just run:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/alal76/notepad-plus-plus-mac/main/quick-install.sh)
+```
+
+If you want to download the script first and review it:
+
+```bash
+# Download the script
+curl -fsSL https://raw.githubusercontent.com/alal76/notepad-plus-plus-mac/main/quick-install.sh -o quick-install.sh
+
+# Review the script (optional)
+less quick-install.sh
+
+# Run it
+bash quick-install.sh
+```
+
+---
+
+### Method 1: Using the Install Script (After Cloning)
 
 1. **Clone the repository:**
    ```bash
