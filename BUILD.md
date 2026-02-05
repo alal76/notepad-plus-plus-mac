@@ -1,6 +1,153 @@
 # Building Notepad++
 
-## Microsoft Visual Studio
+This guide covers building Notepad++ for both Windows (original) and macOS (port).
+
+---
+
+## macOS
+
+**Prerequisites:**
+
+- macOS 11.0 (Big Sur) or later
+- Xcode 13.0 or later (or Xcode Command Line Tools)
+- Git (included with Xcode Command Line Tools)
+
+### Quick Build (Recommended)
+
+The easiest way to build on macOS:
+
+```bash
+# 1. Install Xcode Command Line Tools (if not already installed)
+xcode-select --install
+
+# 2. Clone the repository
+git clone https://github.com/alal76/notepad-plus-plus-mac.git
+cd notepad-plus-plus-mac
+
+# 3. Run the build script
+cd PowerEditor/cocoa/scripts
+./build.sh
+```
+
+The build script will:
+- Build Scintilla.framework
+- Build Lexilla.framework  
+- Build Notepad++.app
+- Copy frameworks into the app bundle
+- The resulting app will be at: `PowerEditor/cocoa/build/Release/Notepad++.app`
+
+### Build Options
+
+```bash
+# Build in Debug mode
+./build.sh -c Debug
+
+# Build for specific architecture
+./build.sh -a x86_64    # Intel Macs
+./build.sh -a arm64     # Apple Silicon Macs
+
+# Build with code signing
+./build.sh -s "Developer ID Application: Your Name (TEAM_ID)"
+
+# Verbose output
+./build.sh -v
+
+# Build only frameworks
+./build.sh frameworks
+
+# Clean build
+./build.sh clean
+```
+
+### Manual Build Steps
+
+If you prefer to build components individually:
+
+#### 1. Build Scintilla.framework
+
+```bash
+cd scintilla/cocoa
+xcodebuild -project Scintilla/Scintilla.xcodeproj \
+           -scheme Scintilla \
+           -configuration Release \
+           -arch $(uname -m) \
+           build
+```
+
+#### 2. Build Lexilla.framework
+
+```bash
+cd lexilla/src/Lexilla
+xcodebuild -project Lexilla.xcodeproj \
+           -scheme Lexilla \
+           -configuration Release \
+           -arch $(uname -m) \
+           build
+```
+
+#### 3. Build Notepad++.app
+
+```bash
+cd PowerEditor/cocoa
+xcodebuild -project NotepadPlusPlus.xcodeproj \
+           -scheme Notepad++ \
+           -configuration Release \
+           -arch $(uname -m) \
+           build
+```
+
+### Creating a Distributable Package
+
+To create a DMG file for distribution:
+
+```bash
+cd PowerEditor/cocoa/scripts
+./package.sh
+```
+
+The DMG will be created at: `PowerEditor/cocoa/build/Notepad++-<version>-macOS.dmg`
+
+### Installation
+
+After building:
+
+```bash
+# Option 1: Use the install script
+./install.sh --skip-dependencies --skip-build
+
+# Option 2: Copy manually
+cp -R PowerEditor/cocoa/build/Release/Notepad++.app /Applications/
+
+# Option 3: Run directly
+open PowerEditor/cocoa/build/Release/Notepad++.app
+```
+
+### Troubleshooting
+
+**"xcodebuild: command not found"**
+```bash
+xcode-select --install
+```
+
+**Framework not found errors**
+```bash
+cd PowerEditor/cocoa/scripts
+./build.sh clean
+./build.sh
+```
+
+**Code signing errors**
+
+For development builds without signing:
+```bash
+codesign --remove-signature PowerEditor/cocoa/build/Release/Notepad++.app
+```
+
+For more details, see [INSTALL_MACOS.md](INSTALL_MACOS.md).
+
+---
+
+## Microsoft Visual Studio (Windows)
 
 **Pre-requisites:**
 
