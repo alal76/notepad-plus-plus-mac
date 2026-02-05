@@ -82,6 +82,16 @@ This macOS port supports:
 - macOS 11 Big Sur
 
 For the original Windows version, all Windows systems still supported by Microsoft are supported by Notepad++. See the [original repository](https://github.com/notepad-plus-plus/notepad-plus-plus) for Windows-specific information.
+
+## Download Pre-built Packages
+
+Pre-built DMG packages for macOS are available from the [Releases page](https://github.com/alal76/notepad-plus-plus-mac/releases).
+
+Each release includes:
+- Universal binary (Intel + Apple Silicon)
+- Ready-to-install DMG package
+- Installation instructions
+
 ## Build Notepad++ for macOS
 
 Please follow the [BUILD.md](BUILD.md) guide to build Notepad++ from source on macOS.
@@ -90,6 +100,12 @@ Quick build:
 ```bash
 cd PowerEditor/cocoa/scripts
 ./build.sh
+```
+
+To create a distributable DMG package:
+```bash
+cd PowerEditor/cocoa/scripts
+./package.sh
 ```
 
 ## Original Windows Version
@@ -125,6 +141,7 @@ For contributions to the Windows version, please visit the [original Notepad++ r
 
 - **[INSTALL_MACOS.md](INSTALL_MACOS.md)** - Installation instructions for macOS
 - **[BUILD.md](BUILD.md)** - Build instructions for all platforms
+- **[RELEASE_PROCESS.md](RELEASE_PROCESS.md)** - How to create and publish macOS releases
 - **[macOS_README.md](macOS_README.md)** - Detailed macOS port documentation
 - **[macOS_QUICKSTART.md](macOS_QUICKSTART.md)** - Quick start guide for developers
 - **[macOS_PORT_PLAN.md](macOS_PORT_PLAN.md)** - Technical porting plan and architecture
