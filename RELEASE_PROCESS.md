@@ -235,7 +235,14 @@ Examples:
 1. Verify your Apple Developer credentials
 2. Check that app is properly code signed
 3. Ensure app-specific password is correct
-4. Review notarization logs: `xcrun notarytool log`
+4. Review notarization logs:
+   ```bash
+   # Get the submission ID from notarytool submit output, then:
+   xcrun notarytool log <submission-id> \
+     --apple-id <apple-id> \
+     --team-id <team-id> \
+     --password <app-specific-password>
+   ```
 
 ## Additional Resources
 
