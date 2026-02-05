@@ -1,0 +1,211 @@
+name: macOS Build and Release
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    name: Build macOS Package
+    runs-on: macos-latest
+    
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      
+      - name: Install build dependencies
+        run: |
+          # Verify Xcode Command Line Tools are available
+          xcode-select --print-path
+          
+          # Check macOS version
+          sw_vers
+      
+      - name: Get version information
+        id: version
+        run: |
+          # Try to extract version from git tag or commit
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            VERSION="${GITHUB_REF#refs/tags/}"
+            echo "version=${VERSION}" >> $GITHUB_OUTPUT
+            echo "is_release=true" >> $GITHUB_OUTPUT
+          else
+            # Use commit short SHA for non-release builds
+            VERSION="dev-$(git rev-parse --short HEAD)"
+            echo "version=${VERSION}" >> $GITHUB_OUTPUT
+            echo "is_release=false" >> $GITHUB_OUTPUT
+          fi
+          
+          echo "Building version: ${VERSION}"
+      
+      - name: Build Notepad++ for macOS
+        run: |
+          cd PowerEditor/cocoa/scripts
+          chmod +x build.sh
+          ./build.sh -c Release -v
+        env:
+          MACOSX_DEPLOYMENT_TARGET: "11.0"
+      
+      - name: Verify build artifacts
+        run: |
+          if [ ! -d "PowerEditor/cocoa/build/Release/Notepad++.app" ]; then
+            echo "Error: Notepad++.app not found!"
+            exit 1
+          fi
+          
+          echo "✅ Build successful!"
+          ls -lah PowerEditor/cocoa/build/Release/
+      
+      - name: Create DMG package
+        run: |
+          cd PowerEditor/cocoa/scripts
+          chmod +x package.sh
+          ./package.sh -c Release -n "Notepad++-${{ steps.version.outputs.version }}-macOS"
+        env:
+          CONFIGURATION: Release
+          DMG_NAME: "Notepad++-${{ steps.version.outputs.version }}-macOS"
+      
+      - name: Verify DMG package
+        id: dmg
+        run: |
+          DMG_FILE=$(find PowerEditor/cocoa/build -name "*.dmg" -type f | head -n 1)
+          
+          if [ -z "$DMG_FILE" ]; then
+            echo "Error: DMG file not found!"
+            exit 1
+          fi
+          
+          echo "dmg_path=${DMG_FILE}" >> $GITHUB_OUTPUT
+          echo "dmg_name=$(basename ${DMG_FILE})" >> $GITHUB_OUTPUT
+          
+          # Display DMG info
+          echo "✅ DMG package created successfully!"
+          ls -lh "${DMG_FILE}"
+          
+          # Test mount the DMG
+          hdiutil verify "${DMG_FILE}"
+      
+      - name: Upload DMG artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Notepad++-macOS-${{ steps.version.outputs.version }}
+          path: ${{ steps.dmg.outputs.dmg_path }}
+          retention-days: 30
+      
+      - name: Upload app bundle artifact (for debugging)
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Notepad++-app-bundle-${{ steps.version.outputs.version }}
+          path: PowerEditor/cocoa/build/Release/Notepad++.app
+          retention-days: 7
+
+  release:
+    name: Create GitHub Release
+    needs: build-macos
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Get version from tag
+        id: version
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/}"
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "Release version: ${VERSION}"
+      
+      - name: Download DMG artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Notepad++-macOS-${{ steps.version.outputs.version }}
+          path: ./release
+      
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          cat > release_notes.md << 'EOF'
+          ## Notepad++ for macOS ${{ steps.version.outputs.version }}
+          
+          ### Installation
+          
+          1. Download the DMG file below
+          2. Open the DMG file
+          3. Drag Notepad++.app to your Applications folder
+          4. Launch Notepad++ from Applications
+          
+          ### System Requirements
+          
+          - macOS 11.0 (Big Sur) or later
+          - Intel (x86_64) or Apple Silicon (arm64)
+          
+          ### What's Included
+          
+          - Native macOS application
+          - Scintilla editor with syntax highlighting
+          - Support for 100+ programming languages
+          - Universal binary (Intel + Apple Silicon)
+          
+          ### Installation via Command Line
+          
+          ```bash
+          bash <(curl -fsSL https://raw.githubusercontent.com/alal76/notepad-plus-plus-mac/main/quick-install.sh)
+          ```
+          
+          ### Building from Source
+          
+          See [BUILD.md](BUILD.md) for build instructions.
+          
+          ### Known Issues
+          
+          - Windows plugins are not compatible with this macOS port
+          - Some advanced features are still under development
+          
+          For more information, see [macOS_README.md](macOS_README.md).
+          EOF
+          
+          echo "Release notes generated"
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Notepad++ macOS ${{ steps.version.outputs.version }}
+          body_path: release_notes.md
+          files: |
+            ./release/*.dmg
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Release created successfully
+        run: |
+          echo "✅ Release ${{ steps.version.outputs.version }} has been published!"
+          echo "Download URL: https://github.com/${{ github.repository }}/releases/tag/${{ steps.version.outputs.version }}"
