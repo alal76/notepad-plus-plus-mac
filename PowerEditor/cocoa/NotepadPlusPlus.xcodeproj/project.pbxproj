@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA0001 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0002; };
+		AA0003 /* MainWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0004; };
+		AA0005 /* DocumentController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0006; };
+		AA0007 /* Document.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0008; };
+		AA0009 /* ScintillaWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0010; };
+		AA0011 /* FileManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0012; };
+		AA0013 /* ConfigManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0014; };
+		AA0015 /* SessionManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0016; };
+		AA0017 /* PluginManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0018; };
+		AA0019 /* TabBarController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0020; };
+		AA0021 /* FindReplaceController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0022; };
+		AA0023 /* PreferencesWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA0024; };
+		AA0025 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0026; };
+		AA0027 /* Scintilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0028; };
+		AA0029 /* Lexilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0030; };
+		AA0031 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0032; };
+		AA0035 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0036; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA0002 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		AA0004 /* MainWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainWindowController.mm; sourceTree = "<group>"; };
+		AA0006 /* DocumentController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DocumentController.mm; sourceTree = "<group>"; };
+		AA0008 /* Document.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Document.mm; sourceTree = "<group>"; };
+		AA0010 /* ScintillaWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScintillaWrapper.mm; sourceTree = "<group>"; };
+		AA0012 /* FileManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FileManager.mm; sourceTree = "<group>"; };
+		AA0014 /* ConfigManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigManager.mm; sourceTree = "<group>"; };
+		AA0016 /* SessionManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SessionManager.mm; sourceTree = "<group>"; };
+		AA0018 /* PluginManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PluginManager.mm; sourceTree = "<group>"; };
+		AA0020 /* TabBarController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TabBarController.mm; sourceTree = "<group>"; };
+		AA0022 /* FindReplaceController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FindReplaceController.mm; sourceTree = "<group>"; };
+		AA0024 /* PreferencesWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PreferencesWindowController.mm; sourceTree = "<group>"; };
+		AA0026 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA0028 /* Scintilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Scintilla.framework; path = "../../scintilla/cocoa/build/Release/Scintilla.framework"; sourceTree = "<group>"; };
+		AA0030 /* Lexilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lexilla.framework; path = "../../lexilla/src/Lexilla/build/Release/Lexilla.framework"; sourceTree = "<group>"; };
+		AA0032 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		AA0034 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA0036 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		AA0100 /* Notepad++.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notepad++.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA0200 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0035 /* Cocoa.framework in Frameworks */,
+				AA0027 /* Scintilla.framework in Frameworks */,
+				AA0029 /* Lexilla.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA0300 = {
+			isa = PBXGroup;
+			children = (
+				AA0400 /* NotepadPlusPlus */,
+				AA0500 /* Frameworks */,
+				AA0600 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA0400 /* NotepadPlusPlus */ = {
+			isa = PBXGroup;
+			children = (
+				AA0410 /* AppKit */,
+				AA0420 /* Platform */,
+				AA0430 /* Controls */,
+				AA0440 /* Resources */,
+				AA0026 /* main.m */,
+			);
+			name = NotepadPlusPlus;
+			path = .;
+			sourceTree = "<group>";
+		};
+		AA0410 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				AA0002 /* AppDelegate.mm */,
+				AA0004 /* MainWindowController.mm */,
+				AA0006 /* DocumentController.mm */,
+				AA0008 /* Document.mm */,
+				AA0010 /* ScintillaWrapper.mm */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		AA0420 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				AA0012 /* FileManager.mm */,
+				AA0014 /* ConfigManager.mm */,
+				AA0016 /* SessionManager.mm */,
+				AA0018 /* PluginManager.mm */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		AA0430 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				AA0020 /* TabBarController.mm */,
+				AA0022 /* FindReplaceController.mm */,
+				AA0024 /* PreferencesWindowController.mm */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		AA0440 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA0034 /* Info.plist */,
+				AA0032 /* MainMenu.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AA0500 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA0036 /* Cocoa.framework */,
+				AA0028 /* Scintilla.framework */,
+				AA0030 /* Lexilla.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA0600 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA0100 /* Notepad++.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA0700 /* Notepad++ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0800 /* Build configuration list for PBXNativeTarget "Notepad++" */;
+			buildPhases = (
+				AA0710 /* Sources */,
+				AA0200 /* Frameworks */,
+				AA0720 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Notepad++";
+			productName = "Notepad++";
+			productReference = AA0100 /* Notepad++.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA0900 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1400;
+				ORGANIZATIONNAME = "Notepad++";
+				TargetAttributes = {
+					AA0700 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = AA0910 /* Build configuration list for PBXProject "NotepadPlusPlus" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA0300;
+			productRefGroup = AA0600 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA0700 /* Notepad++ */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA0720 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0031 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA0710 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0025 /* main.m in Sources */,
+				AA0001 /* AppDelegate.mm in Sources */,
+				AA0003 /* MainWindowController.mm in Sources */,
+				AA0005 /* DocumentController.mm in Sources */,
+				AA0007 /* Document.mm in Sources */,
+				AA0009 /* ScintillaWrapper.mm in Sources */,
+				AA0011 /* FileManager.mm in Sources */,
+				AA0013 /* ConfigManager.mm in Sources */,
+				AA0015 /* SessionManager.mm in Sources */,
+				AA0017 /* PluginManager.mm in Sources */,
+				AA0019 /* TabBarController.mm in Sources */,
+				AA0021 /* FindReplaceController.mm in Sources */,
+				AA0023 /* PreferencesWindowController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA0801 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../../scintilla/cocoa/build/Release",
+					"$(PROJECT_DIR)/../../lexilla/src/Lexilla/build/Release",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Resources/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Notepad++. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 8.6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.notepad-plus-plus";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		AA0802 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../../scintilla/cocoa/build/Release",
+					"$(PROJECT_DIR)/../../lexilla/src/Lexilla/build/Release",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Resources/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Notepad++. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 8.6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.notepad-plus-plus";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		AA0911 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AA0912 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA0800 /* Build configuration list for PBXNativeTarget "Notepad++" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0801 /* Debug */,
+				AA0802 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0910 /* Build configuration list for PBXProject "NotepadPlusPlus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0911 /* Debug */,
+				AA0912 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA0900 /* Project object */;
+}
