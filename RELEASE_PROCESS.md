@@ -2,6 +2,27 @@
 
 This document describes how to create and publish macOS releases for Notepad++.
 
+## Quick Start: Create a Release
+
+The fastest way to create a release:
+
+```bash
+# 1. Ensure your code is ready
+git checkout main
+git pull
+
+# 2. Create and push a version tag
+git tag v1.0.0
+git push origin v1.0.0
+
+# 3. That's it! GitHub Actions will automatically:
+#    - Build the macOS app
+#    - Create a DMG package
+#    - Publish a GitHub Release
+```
+
+Monitor the build at: https://github.com/alal76/notepad-plus-plus-mac/actions
+
 ## Overview
 
 The macOS build and release process is automated via GitHub Actions. The workflow automatically:

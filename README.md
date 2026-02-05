@@ -2,6 +2,8 @@
 
 [![Original Repository](https://img.shields.io/badge/Original-notepad--plus--plus-blue)](https://github.com/notepad-plus-plus/notepad-plus-plus)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![macOS Build](https://github.com/alal76/notepad-plus-plus-mac/actions/workflows/macos_build.yml/badge.svg)](https://github.com/alal76/notepad-plus-plus-mac/actions/workflows/macos_build.yml)
+[![GitHub release](https://img.shields.io/github/v/release/alal76/notepad-plus-plus-mac)](https://github.com/alal76/notepad-plus-plus-mac/releases/latest)
 
 ## About This Port
 
