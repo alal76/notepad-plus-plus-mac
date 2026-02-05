@@ -126,15 +126,28 @@ check_architecture() {
 }
 
 check_disk_space() {
-    local available=$(df -h . | awk 'NR==2 {print $4}')
-    log "Available disk space: $available"
+    # Get available space in gigabytes
+    local available_gb=$(df -g . 2>/dev/null | awk 'NR==2 {print $4}')
     
-    # Simple check - if it's in GB and > 1, we're good
-    if [[ "$available" =~ "Gi" ]]; then
-        success "Sufficient disk space available"
+    # If df -g is not supported, fall back to df -h and parse
+    if [[ -z "$available_gb" ]]; then
+        available_gb=$(df -h . | awk 'NR==2 {print $4}')
+        log "Available disk space: $available_gb"
+        # Simple heuristic check
+        local numeric=$(echo "$available_gb" | grep -o '^[0-9.]*')
+        if [[ "$available_gb" =~ [Gg]i?$ ]] && (( $(echo "$numeric >= 1" | bc -l 2>/dev/null || echo 0) )); then
+            success "Sufficient disk space available"
+            return
+        fi
     else
-        warn "Low disk space. At least 1 GB recommended."
+        log "Available disk space: ${available_gb}G"
+        if [[ "$available_gb" -ge 1 ]]; then
+            success "Sufficient disk space available"
+            return
+        fi
     fi
+    
+    warn "Low disk space. At least 1 GB recommended for installation."
 }
 
 check_xcode_tools() {
@@ -203,11 +216,11 @@ build_application() {
     
     if [[ "$VERBOSE" == "1" ]]; then
         bash "$BUILD_SCRIPT" $build_flags
+        local build_status=$?
     else
         bash "$BUILD_SCRIPT" $build_flags 2>&1 | grep -E "(\[BUILD\]|\[SUCCESS\]|\[ERROR\])" || true
+        local build_status=${PIPESTATUS[0]}
     fi
-    
-    local build_status=${PIPESTATUS[0]}
     
     if [[ $build_status -eq 0 ]]; then
         success "Build completed successfully"
@@ -315,7 +328,7 @@ create_command_line_alias() {
         fi
         
         # Check if alias already exists
-        if grep -q "alias npp=" "$shell_config" 2>/dev/null; then
+        if grep -q "^[[:space:]]*alias npp=" "$shell_config" 2>/dev/null; then
             log "Alias 'npp' already exists in $shell_config"
         else
             log "Adding alias to $shell_config..."

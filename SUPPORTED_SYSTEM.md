@@ -6,10 +6,10 @@ This macOS port of Notepad++ supports:
 
 | macOS Version | Status | Architecture | Notes |
 |---------------|--------|--------------|-------|
-| **macOS 14 Sonoma** | Supported | Intel, Apple Silicon | Current version |
-| **macOS 13 Ventura** | Supported | Intel, Apple Silicon | Current version |
-| **macOS 12 Monterey** | Supported | Intel, Apple Silicon | Current version |
-| **macOS 11 Big Sur** | Supported | Intel, Apple Silicon | Minimum version |
+| **macOS 14 Sonoma** | Supported | Intel, Apple Silicon | Latest tested version |
+| **macOS 13 Ventura** | Supported | Intel, Apple Silicon | Fully supported |
+| **macOS 12 Monterey** | Supported | Intel, Apple Silicon | Fully supported |
+| **macOS 11 Big Sur** | Supported | Intel, Apple Silicon | Minimum required version |
 | **macOS 10.15 Catalina** | Not tested | Intel | May work but unsupported |
 | **macOS 10.14 and earlier** | No | N/A | Not compatible |
 
