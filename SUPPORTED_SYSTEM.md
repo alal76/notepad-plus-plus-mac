@@ -1,3 +1,28 @@
+# Supported Operating Systems
+
+## macOS Port
+
+This macOS port of Notepad++ supports:
+
+| macOS Version | Status | Architecture | Notes |
+|---------------|--------|--------------|-------|
+| **macOS 14 Sonoma** | Supported | Intel, Apple Silicon | Current version |
+| **macOS 13 Ventura** | Supported | Intel, Apple Silicon | Current version |
+| **macOS 12 Monterey** | Supported | Intel, Apple Silicon | Current version |
+| **macOS 11 Big Sur** | Supported | Intel, Apple Silicon | Minimum version |
+| **macOS 10.15 Catalina** | Not tested | Intel | May work but unsupported |
+| **macOS 10.14 and earlier** | No | N/A | Not compatible |
+
+**Requirements:**
+- Xcode 13.0 or later (for building from source)
+- Command Line Tools (minimum)
+- Universal Binary: Supports both Intel (x86_64) and Apple Silicon (arm64)
+
+---
+
+## Original Windows Version
+
+The information below applies to the **original Windows version** of Notepad++. For Windows support, please refer to the [original repository](https://github.com/notepad-plus-plus/notepad-plus-plus).
 
 ## Supported OS Table
 

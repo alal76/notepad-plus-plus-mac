@@ -1,5 +1,7 @@
 # Contributing
 
+> **Note for macOS Port Contributors**: This document contains the original contribution guidelines for Notepad++ Windows. For macOS-specific contributions, please see the [README.md](README.md) Contribution section. The general principles here still apply, but macOS contributions should follow AppKit conventions and macOS Human Interface Guidelines.
+
 ***Ask not what Notepad++ can do for you - ask what you can do for Notepad++***
 
 ## Reporting Issues
