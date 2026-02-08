@@ -2,6 +2,8 @@
 
 This guide covers building Notepad++ for both Windows (original) and macOS (port).
 
+**For detailed Xcode configuration and troubleshooting, see [XCODE_BUILD_CONFIG.md](XCODE_BUILD_CONFIG.md).**
+
 ---
 
 ## macOS
