@@ -28,21 +28,33 @@
 
 /* Begin PBXFileReference section */
 		AA0002 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		AA0003 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AA0004 /* MainWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainWindowController.mm; sourceTree = "<group>"; };
+		AA0005 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		AA0006 /* DocumentController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DocumentController.mm; sourceTree = "<group>"; };
+		AA0007 /* DocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentController.h; sourceTree = "<group>"; };
 		AA0008 /* Document.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Document.mm; sourceTree = "<group>"; };
+		AA0009 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		AA0010 /* ScintillaWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScintillaWrapper.mm; sourceTree = "<group>"; };
+		AA0011 /* ScintillaWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScintillaWrapper.h; sourceTree = "<group>"; };
 		AA0012 /* FileManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FileManager.mm; sourceTree = "<group>"; };
+		AA0013 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		AA0014 /* ConfigManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfigManager.mm; sourceTree = "<group>"; };
+		AA0015 /* ConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigManager.h; sourceTree = "<group>"; };
 		AA0016 /* SessionManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SessionManager.mm; sourceTree = "<group>"; };
+		AA0017 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
 		AA0018 /* PluginManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PluginManager.mm; sourceTree = "<group>"; };
+		AA0019 /* PluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginManager.h; sourceTree = "<group>"; };
 		AA0020 /* TabBarController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TabBarController.mm; sourceTree = "<group>"; };
+		AA0021 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		AA0022 /* FindReplaceController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FindReplaceController.mm; sourceTree = "<group>"; };
+		AA0023 /* FindReplaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindReplaceController.h; sourceTree = "<group>"; };
 		AA0024 /* PreferencesWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PreferencesWindowController.mm; sourceTree = "<group>"; };
+		AA0025 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		AA0026 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AA0028 /* Scintilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Scintilla.framework; path = "../../scintilla/cocoa/build/Release/Scintilla.framework"; sourceTree = "<group>"; };
 		AA0030 /* Lexilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lexilla.framework; path = "../../lexilla/src/Lexilla/build/Release/Lexilla.framework"; sourceTree = "<group>"; };
-		AA0032 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		AA0032 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Resources/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		AA0034 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA0036 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA0100 /* Notepad++.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notepad++.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,10 +100,17 @@
 			isa = PBXGroup;
 			children = (
 				AA0002 /* AppDelegate.mm */,
+				AA0003 /* AppDelegate.h */,
 				AA0004 /* MainWindowController.mm */,
+				AA0005 /* MainWindowController.h */,
 				AA0006 /* DocumentController.mm */,
+				AA0007 /* DocumentController.h */,
 				AA0008 /* Document.mm */,
+				AA0009 /* Document.h */,
 				AA0010 /* ScintillaWrapper.mm */,
+				AA0011 /* ScintillaWrapper.h */,
+				AA0024 /* PreferencesWindowController.mm */,
+				AA0025 /* PreferencesWindowController.h */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -100,9 +119,13 @@
 			isa = PBXGroup;
 			children = (
 				AA0012 /* FileManager.mm */,
+				AA0013 /* FileManager.h */,
 				AA0014 /* ConfigManager.mm */,
+				AA0015 /* ConfigManager.h */,
 				AA0016 /* SessionManager.mm */,
+				AA0017 /* SessionManager.h */,
 				AA0018 /* PluginManager.mm */,
+				AA0019 /* PluginManager.h */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -111,8 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				AA0020 /* TabBarController.mm */,
+				AA0021 /* TabBarController.h */,
 				AA0022 /* FindReplaceController.mm */,
-				AA0024 /* PreferencesWindowController.mm */,
+				AA0023 /* FindReplaceController.h */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -171,7 +195,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Notepad++";
 				TargetAttributes = {
 					AA0700 = {
@@ -244,11 +268,21 @@
 				CURRENT_PROJECT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/../../scintilla/cocoa/build/Release",
-					"$(PROJECT_DIR)/../../lexilla/src/Lexilla/build/Release",
+					"$(PROJECT_DIR)/../../scintilla/cocoa/build/$(CONFIGURATION)",
+					"$(PROJECT_DIR)/../../lexilla/src/Lexilla/build/$(CONFIGURATION)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../../scintilla/include",
+					"$(PROJECT_DIR)/../../scintilla/src",
+					"$(PROJECT_DIR)/../../lexilla/include",
+					"$(PROJECT_DIR)/../../lexilla/src",
+					"$(PROJECT_DIR)/AppKit",
+					"$(PROJECT_DIR)/Platform",
+					"$(PROJECT_DIR)/Controls",
+				);
 				INFOPLIST_FILE = "Resources/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Notepad++. All rights reserved.";
@@ -278,11 +312,21 @@
 				CURRENT_PROJECT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/../../scintilla/cocoa/build/Release",
-					"$(PROJECT_DIR)/../../lexilla/src/Lexilla/build/Release",
+					"$(PROJECT_DIR)/../../scintilla/cocoa/build/$(CONFIGURATION)",
+					"$(PROJECT_DIR)/../../lexilla/src/Lexilla/build/$(CONFIGURATION)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../../scintilla/include",
+					"$(PROJECT_DIR)/../../scintilla/src",
+					"$(PROJECT_DIR)/../../lexilla/include",
+					"$(PROJECT_DIR)/../../lexilla/src",
+					"$(PROJECT_DIR)/AppKit",
+					"$(PROJECT_DIR)/Platform",
+					"$(PROJECT_DIR)/Controls",
+				);
 				INFOPLIST_FILE = "Resources/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Notepad++. All rights reserved.";
